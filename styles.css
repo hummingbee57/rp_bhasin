@@ -22,7 +22,7 @@
 }
 
 .authors{
-    background-color: #dbe3e7;
+    background-color: var(--sunset);
 }
 
 .body{
@@ -30,7 +30,7 @@
 }
 
 .footer{
-    background-color: #023E8A;
+    background-color:var(--dark-green);
 }
 
 .icon-white{            /* Arrow icon at bottom of page */
@@ -48,12 +48,17 @@
 }
 
 .overview{
-    background-color: var(--off-white);
+    background-color: var(--sunset);
 }
 
 .overview-font {
     font-family: "Roboto", cursive;
     font-weight: 400;
+}
+
+.ov-img-div {
+    display: inline-flex;
+    align-items: center;
 }
 
 .ovPadLeft{
@@ -65,13 +70,18 @@
 }
 
 .procedure{
-    background-color: #dbe3e7;
+    background-color: var(--sunset);
     padding: 1px;
 }
 
 .showcase{
     background-color: var(--orange); /*#0096c7*/
     color: var(--off-white);
+}
+
+.showcase-img,
+.ov-img {
+    border-radius: 20px;
 }
 
 /* ----------------- ID CSS ----------------- */
@@ -96,7 +106,7 @@ h1.display-4, .section-title {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #eae6e6;
+    background-color: var(--off-white);
     /*transform-origin: bottom right;*/
     transition: transform 0.35s ease-out;
 }
@@ -104,4 +114,15 @@ h1.display-4, .section-title {
 .hover-underline-animation:hover:after {
     transform: scaleX(1);
     /*transform-origin: bottom left;*/
+}
+
+/* Nav image animation */
+.nav-img {
+    transition: background-color .5s;
+    padding: 2px;
+    border-radius: 100%;
+}
+
+.nav-img:hover {
+    background-color: #fefae0;
 }

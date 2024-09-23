@@ -25,7 +25,7 @@
             <!-- lg = large breakpoint navbar-dark = make text light -->
             <div class="container">
                 <a href="#" class="navbar-brand">
-                    <img src="img/droplet.png" alt="Water Logo" class="d-inline-block align-text-top w-50">
+                    <img src="img/fire.png" alt="Fire Logo" class="d-inline-block align-text-top w-50 nav-img">
                 </a>
 
                 <!-- Hamburger menu button -->
@@ -58,13 +58,13 @@
                 <div class="row">
                     <div class="col-sm-4 p-0 d-flex align-items-center">
                         <!-- img-fluid = won't expand larger than container + scales down-->
-                        <img class="img-fluid" src="img/img-5509.jpg" alt="Shark River">
+                        <img class="img-fluid showcase-img" src="img/forest-fire.png" alt="Forest Fire">
                     </div>
                     <div class="col-sm-8 p-0 d-flex align-items-center">
                         <div class="container">
                             <h1 class="display-4" id="header-title">Using Machine Learning to Predict Wildfires in CA
                             </h1>
-                            <h2>bobobobobo</h2>
+                            <h2>Comparing different models</h2>
                         </div>
                     </div>
                 </div>
@@ -73,9 +73,6 @@
         <section class="overview text-dark p-2 text-left">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-4 p-3">
-                        <img class="img-fluid" src="img/19418.jpeg" alt="Water graph">
-                    </div>
                     <div class="col-sm-8 p-3">
                         <h1 class="ovPadLeft section-title">Background</h1>
                         <p class="lead overview-font ovPadLeft" id="">
@@ -91,39 +88,46 @@
                             than others
                         </p>
                     </div>
+                    <div class="col-sm-4 p-3 ov-img-div">
+                        <img class="img-fluid ov-img" src="img/server.jpg" alt="Water graph">
+                    </div>
                 </div>
                 <div class="row">
+                    <div class="col-sm-4 p-3 ov-img-div">
+                        <img class="img-fluid ov-img" src="img/california-population-map.png">
+                    </div>
                     <div class="col-sm-8 p-3">
                         <h1 class="ovPadLeft section-title">Rationale</h1>
                         <p class="lead overview-font ovPadLeft" id="">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            California is known for its frequent wildfires. Because California is highly populated,
+                            wildfires there cause a lot of damage. In a year, wildfires can kill dozens, misplace
+                            thousands, and cause tens of billions of dollars in property damage. Being able to predict
+                            these fires could help mitigate this tremendously. In previous studies, Multiple Linear
+                            Regressions (MLR) and Multilayer Perceptrons (MLP) have been shown to be accurate in
+                            predicting wildfire spread. Additionally, weather, specifically temperature, plays a big
+                            role in the starting and spreading of wildfires. There is lots of data available on
+                            historical wildfires and historical temperature conditions in California, meaning that a
+                            machine learning model could be trained to predict wildfires based on temperature data.
                         </p>
-                    </div>
-                    <div class="col-sm-4 p-3">
-                        <img class="img-fluid" src="img/watermap.jpg">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4 p-3">
-                        <img class="img-fluid" src="img/phytoplankton_pnas.jpg" alt="phytoplankton">
-                    </div>
                     <div class="col-sm-8 p-3">
                         <h1 class="ovPadLeft section-title">Research practicum</h1>
                         <p class="lead overview-font ovPadLeft" id="">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            In this experiment, historical fire and temperature data were used to train both an MLR and
+                            an MLP to predict wildfires in California. Each model’s R<sup>2</sup> value and mean average
+                            error (MAE) were calculated. The models were compared to a control that calculated the
+                            average area and centroid of all of its training data, as well as each other. Since
+                            neural networks are particularly well suited for complex input data, an MLP trained to
+                            predict fires should be more accurate than other kinds of machine learning models.
                         </p>
+                    </div>
+                    <div class="col-sm-4 p-3 ov-img-div">
+                        <img class="img-fluid ov-img" src="img/california-fires-graph.jpg" alt="phytoplankton">
                     </div>
                 </div>
             </div>
-
         </section>
 
         <footer class="p-5 footer text-light text-center position-relative">
