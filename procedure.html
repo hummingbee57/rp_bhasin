@@ -25,7 +25,7 @@
             <!-- lg = large breakpoint navbar-dark = make text light -->
             <div class="container">
                 <a href="index.html" class="navbar-brand">
-                    <img src="img/droplet.png" alt="Water Logo" class="d-inline-block align-text-top w-50">
+                    <img src="img/fire.png" alt="Fire Logo" class="d-inline-block align-text-top w-50 nav-img">
                 </a>
 
                 <!-- Hamburger menu button -->
@@ -40,7 +40,7 @@
                         <li class="nav-item">
                             <a href="authors.html" class="nav-link hover-underline-animation nbMenuItem">Authors</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a href="procedure.html" class="nav-link hover-underline-animation nbMenuItem">Procedure</a>
                         </li>
                         <li class="nav-item">
@@ -56,17 +56,24 @@
             <div class="container">
                 <br>
                 <div class="text-center">
-                    <h1>Procedure</h1>
-                    <h2>Using a numbered list, describe your procedure (include pictures)</h2>
+                    <h1 class="procedure-title">Procedure</h1>
+                    <h2 class="procedure-subtitle">Using a numbered list, describe your procedure (include pictures)
+                    </h2>
                 </div>
                 <hr><br>
 
-                <table class="table table-hover text-center table-light table-bordered border-dark-subtle">
+                <table class="table text-center table-light table-bordered border-dark-subtle">
                     <thead>
                         <tr class="table-primary">
-                            <th><h3>Step</h3></th>
-                            <th><h3>Description</h3></th>
-                            <th><h3>Image</h3></th>
+                            <th>
+                                <h3>Step</h3>
+                            </th>
+                            <th>
+                                <h3>Description</h3>
+                            </th>
+                            <th>
+                                <h3>Image</h3>
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
@@ -75,9 +82,10 @@
                                 <h3>1</h3>
                             </th>
                             <td>
-                                <h3 class="howTo">Start Python Flask server</h3>
+                                <h3 class="howTo">Combine CAL FIRE dataset with Berkeley Earth Temperature dataset</h3>
                             </td>
-                            <td class="text-center"><img src="img/python-logo.png" alt="Python Logo"></td>
+                            <td class="text-center"><img src="img/cal-fire-logo.png" alt="CAL FIRE logo" id="calfire">
+                            </td>
 
                         </tr>
                         <tr class="align-middle">
@@ -85,45 +93,48 @@
                                 <h3>2</h3>
                             </th>
                             <td>
-                                <h3 class="howTo">Power circuit on</h3>
+                                <h3 class="howTo">Split dataset into 5 folds for cross-validation</h3>
                             </td>
-                            <td class="text-center"><img src="img/range-finder-tp.png" alt="Range Finder"></td>
-                            
+                            <td class="text-center"><img src="img/cross-val-diagram.png"
+                                    alt="Screenshot of data-splitting code" id="cross-val"></td>
+
                         </tr>
                         <tr class="align-middle">
                             <th scope="row" class="table-secondary">
                                 <h3>3</h3>
                             </th>
                             <td>
-                                <h3 class="howTo">Nano IoT Connects to PC via wifi and sends data to arduino program</h3>
+                                <h3 class="howTo">Create Multilayer Perceptron and Multiple linear regression models
+                                </h3>
                             </td>
-                            <td class="text-center"><img src="img/nano33-iot3.png" alt="Nano 33 IoT"></td>
-                            
+                            <td class="text-center"><img src="img/python-logo.png" alt="Python logo"></td>
+
                         </tr>
                         <tr class="align-middle">
                             <th scope="row" class="table-secondary">
                                 <h3>4</h3>
                             </th>
                             <td>
-                                <h3 class="howTo">Arduino sends data to flask server w/ HTTP request</h3>
+                                <h3 class="howTo">Train Machine Learning models</h3>
                             </td>
-                            <td class="text-center"><img src="img/arduino-logo.png" alt="Arduino Logo"></td>
-                            
+                            <td class="text-center"><img src="img/tensorflow.svg" alt="TensorFlow Logo" id="tensorflow">
+                            </td>
+
                         </tr>
                         <tr class="align-middle">
                             <th scope="row" class="table-secondary">
                                 <h3>5</h3>
                             </th>
                             <td>
-                                <h3 class="howTo">Flask connects to firebase and sends data for storage</h3>
+                                <h3 class="howTo">Test each model's accuracy on reserved training data</h3>
                             </td>
-                            <td class="text-center"><img src="img/firebase-logo.png" alt="Firebase Logo"></td>
-                            
+                            <td class="text-center"><img src="img/checkmark.svg" alt="Checkmark" id="checkmark"></td>
+
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </section>            
+        </section>
 
         <footer class="p-5 footer text-light text-center position-relative">
             <div class="container">
@@ -135,4 +146,5 @@
         </footer>
     </div>
 </body>
+
 </html>
