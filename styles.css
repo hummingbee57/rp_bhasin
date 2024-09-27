@@ -1,42 +1,59 @@
-/* ----------------- Class CSS ----------------- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&family=Gowun+Batang:wght@400;700&display=swap');
 
-.about{
-    width:400px;
-    margin: auto;
+:root {
+    --dark-green: #606c38;
+    --sage: #afb38c;
+    --night: #121619;
+    --off-white: #fefae0;
+    --melon: #f9b38b;
+    --light-red: #E85F5C;
+    --ash-gray: #b0b0ad;
+    --sunset: #FFD199;
+    --orange: #F4987B;
 }
 
-.about-team{
-    color:rgb(82, 81, 81)
-}
-
-.authors{
-    background-color: #dbe3e7;
+.title {
+    font-family: "Playfair Display";
+    font-weight: 900;
+    color: var(--night);
 }
 
 .body{
-    background-color: rgb(90, 92, 92);
+    background-color: var(--ash-gray);
 }
 
 .footer{
-    background-color: #023E8A;
+    background-color:var(--dark-green);
 }
 
 .icon-white{            /* Arrow icon at bottom of page */
-    color: #FFFFFF;
+    color: var(--off-white);
 }
 
 .nb-background-color{   /* navbar background color */
-    background-color: #023E8A;
+    background-color: var(--light-red);
 }
 
 .nbMenuItem{               /* navbar link text properties */
     font-size:25px;
     margin-left: 10px;
     margin-right: 10px;
+    font-family: "Gowun Batang", sans-serif;
 }
 
-.overview{
-    background-color: #dbe3e7;
+.overview, .references, .procedure, .authors {
+    background-color: var(--off-white);
+}
+
+.overview-font {
+    font-family: "Gowun Batang", cursive;
+    font-weight: 400;
+}
+
+.ov-img-div {
+    display: inline-flex;
+    align-items: center;
 }
 
 .ovPadLeft{
@@ -47,16 +64,126 @@
     padding-right: 20px;
 }
 
-.procedure{
-    background-color: #dbe3e7;
-    padding: 1px;
+.showcase {
+    background-color: var(--orange); /*#0096c7*/
+    color: var(--off-white);
 }
 
-.showcase{
-    background-color: #8fa3ab; /*#0096c7*/
+.showcase-img,
+.ov-img {
+    border-radius: 20px;
 }
+
+.subtitle,
+.howTo {
+    font-family: "Gowun Batang";
+}
+
+/* Procedure Table Styling */
+.table-primary th {
+    background-color: var(--sunset);
+}
+
+th h3 {
+    font-family: "Playfair Display";
+    font-weight: 800;
+    color: var(--night);
+}
+
+th.table-secondary {
+    background-color: var(--sage);
+}
+
+tr:hover {
+    th[scope='row'] {
+        background-color: #859454;
+    }
+
+    td {
+        background-color: #e5e5e0;
+    }
+}
+
+hr {
+    color: var(--orange);
+    border: 2px dotted;
+    opacity: 100%;
+}
+
+.procedure-img, td, th {
+    transition: all 1s ease 50ms;
+}
+
+td.procedure-img-td {
+    transition: all 1s ease 50ms;
+    padding: .5rem .6rem;
+}
+
+.procedure-img-td:hover {
+    padding: .25rem;
+
+    .procedure-img {
+        height: calc(150px + .5rem);
+  /*  }
+
+    #tensorflow { */
+        width: min(auto, 170px);
+    }
+}
+
+/* authors.html Styling */
+.about {
+    width:400px;
+    margin: auto;
+    transition: filter .3s 50ms;
+    padding: .25rem;
+    font-family: "Gowun Batang";
+    font-weight: 500;
+}
+
+.about:hover {
+    filter: drop-shadow(0px 0px 8px var(--ash-gray));
+}
+
+.card {
+    margin-bottom: 15%;
+}
+
+.card-title {
+    font-weight: 700; /* bolds the authors' names */
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+/* references.html styling */
+.accordion {
+    padding-bottom: 2rem;
+    --bs-accordion-active-bg: var(--melon);
+    --bs-accordion-active-color: var(--night);
+    --bs-accordion-bg: rgb(255, 209, 153, 70%);
+}
+
+.accordion-body a {
+    color: var(--light-red);
+}
+
 
 /* ----------------- ID CSS ----------------- */
+h1.display-4, .section-title {
+    font-family: "Playfair Display", serif;
+    font-weight: 800;
+}
+
+#subtitle {
+    font-family: "Gowun Batang";
+    font-weight: bold;
+}
+
+.procedure-img {
+    height: 150px;
+}
 
 /* -----------------Underline Animation CSS -----------------*/
 .hover-underline-animation {
@@ -73,12 +200,22 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #eae6e6;
+    background-color: var(--off-white);
     /*transform-origin: bottom right;*/
     transition: transform 0.35s ease-out;
 }
   
 .hover-underline-animation:hover:after {
     transform: scaleX(1);
-    /*transform-origin: bottom left;*/
+}
+
+/* Nav image animation */
+.nav-img {
+    transition: background-color .5s;
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.nav-img:hover {
+    background-color: #fefae0;
 }
