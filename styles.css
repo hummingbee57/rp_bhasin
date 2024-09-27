@@ -131,6 +131,10 @@ td.procedure-img-td {
     }
 }
 
+.procedure {
+    padding: 1px;
+}
+
 /* authors.html Styling */
 .about {
     width:400px;
