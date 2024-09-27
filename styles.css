@@ -6,14 +6,14 @@
     --sage: #afb38c;
     --night: #121619;
     --off-white: #fefae0;
-    --melon: #f3ad9e;
+    --melon: #f9b38b;
     --light-red: #E85F5C;
     --ash-gray: #b0b0ad;
     --sunset: #FFD199;
     --orange: #F4987B;
 }
 
-.about-team, .procedure-title {
+.title {
     font-family: "Playfair Display";
     font-weight: 900;
     color: var(--night);
@@ -42,7 +42,7 @@
     font-family: "Gowun Batang", sans-serif;
 }
 
-.overview{
+.overview, .references, .procedure, .authors {
     background-color: var(--off-white);
 }
 
@@ -64,7 +64,7 @@
     padding-right: 20px;
 }
 
-.showcase{
+.showcase {
     background-color: var(--orange); /*#0096c7*/
     color: var(--off-white);
 }
@@ -74,18 +74,12 @@
     border-radius: 20px;
 }
 
-
-/* Procedure Table Styling */
-.procedure{
-    background-color: var(--off-white);
-    padding: 1px;
-}
-
-.procedure-subtitle,
+.subtitle,
 .howTo {
     font-family: "Gowun Batang";
 }
 
+/* Procedure Table Styling */
 .table-primary th {
     background-color: var(--sunset);
 }
@@ -151,10 +145,6 @@ td.procedure-img-td {
     filter: drop-shadow(0px 0px 8px var(--ash-gray));
 }
 
-.authors{
-    background-color: var(--off-white);
-}
-
 .card {
     margin-bottom: 15%;
 }
@@ -166,6 +156,19 @@ td.procedure-img-td {
 .img-circle {
     border-radius: 50%;
 }
+
+/* references.html styling */
+.accordion {
+    padding-bottom: 2rem;
+    --bs-accordion-active-bg: var(--melon);
+    --bs-accordion-active-color: var(--night);
+    --bs-accordion-bg: rgb(255, 209, 153, 70%);
+}
+
+.accordion-body a {
+    color: var(--light-red);
+}
+
 
 /* ----------------- ID CSS ----------------- */
 h1.display-4, .section-title {
