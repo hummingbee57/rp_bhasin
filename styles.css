@@ -213,6 +213,23 @@ h1.display-4, .section-title {
     transform: scaleX(1);
 }
 
+.background{
+    background-color: #536878;
+}
+
+#chart-wrapper{
+    margin: auto;
+    padding: 10px;
+    /* If nesting a chart's container within another container, remove the 
+       height and width values.  The outer container will control the dimensions */ 
+    height: 40vh; 
+    width:  80vw;
+    min-height: 400px;
+    background-color: whitesmoke !important;
+    justify-content: center;
+    align-items: center;  
+}
+
 /* Nav image animation */
 .nav-img {
     transition: background-color .5s;
