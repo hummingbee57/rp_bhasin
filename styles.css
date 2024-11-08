@@ -173,6 +173,14 @@ td.procedure-img-td {
     color: var(--light-red);
 }
 
+/* results.html styling */
+#result-header {
+    background-color: var(--sunset);
+}
+
+.results-chart {
+    background-color: var(--off-white);
+}
 
 /* ----------------- ID CSS ----------------- */
 h1.display-4, .section-title {

@@ -1,15 +1,16 @@
 /* Fetch CSV temp data and display via chart.js 
     All temp values are differences from the mean of 14 deg-C */
 
-    async function getData() {
-        const response = await fetch('../data/control_area.csv');  // .. moves up one folder level
+    async function getData(filePath) {
+        const response = await fetch(filePath);  // .. moves up one folder level
         const data = await response.text();
         // console.log(data);
         
-        const xYears = [];
-        const yTemps = [];
-        const yNHtemps = [];
-        const ySHtemps = [];
+        const trials = [];
+        const meanAbsErrorTrain = [];
+        const meanAbsErrorTest = [];
+        const r2ScoreTrain = [];
+        const r2ScoreTest = [];
     
         // \n - new line character
         // split('\n') separate the table into an array of separate rows
@@ -19,53 +20,69 @@
     
         table.forEach(row => {
             const columns = row.split(',');  // split row into columns using commas 
-            const year = parseFloat(columns[0]); // assign year value
-            xYears.push(year);
+            const trial = parseFloat(columns[0]); // assign trial value
+            trials.push(trial);
             
-            const temp = parseFloat(columns[1]); // Global temp value
-            yTemps.push(temp + 14);
+            const maeTrain = parseFloat(columns[1]); // mae = mean absolute error
+            meanAbsErrorTrain.push(maeTrain);
     
-            const nhtemp = parseFloat(columns[2]); // Global temp value
-            yNHtemps.push(nhtemp + 14);
+            const maeTest = parseFloat(columns[2]); // mae = mean absolute error
+            meanAbsErrorTest.push(maeTest);
     
-            const shtemp = parseFloat(columns[3]); // Global temp value
-            ySHtemps.push(shtemp + 14);
+            const r2Train = parseFloat(columns[3]); // mae = mean absolute error
+            r2ScoreTrain.push(r2Train);
+
+            const r2Test = parseFloat(columns[4]); // mae = mean absolute error
+            r2ScoreTest.push(r2Test);
     
             // console.log(year, temp, nhtemp, shtemp);
         })
-        return {xYears, yTemps, yNHtemps, ySHtemps}  // return multiple values as a object
+        return {trials, meanAbsErrorTrain, meanAbsErrorTest, r2ScoreTrain, r2ScoreTest}  // return multiple values as a object
     }
     
-    async function createChart() {
-        const data = await getData(); // wait for getData to get formatted data
-        console.log(data.ySHtemps);
-        const lineChart = document.getElementById('lineChart');
-        const degreeSymbol = String.fromCharCode(176);
-    
+    async function createChart(metric, train) {    // metric can be 'mae' or 'r2', train can be true or false
+        // Get formatted data for all three area predictors
+        const controlData = await getData('../data/control_area.csv'); // wait for getData to get formatted data
+        const mlpData = await getData('../data/mlp_area.csv');
+        const mlrData = await getData('../data/mlr_area.csv');
+
+        const chartId = `${metric}-${train ? 'train' : 'test'}`
+        console.log(chartId)
+        const lineChart = document.getElementById(chartId);
+
+        // Declare String Values based on metric and train/test
+        const prefix = metric === 'mae' ? 'meanAbsError' : 'r2Score';
+        const suffix = train ? 'Train' : 'Test';
+        const property = prefix + suffix;
+        console.log(property)
+        const metricTitle = metric === 'mae' ? 'Mean Absolute Error in sq. km.' : 'R^2 Score';
+        const metricTitleWithoutUnit = metric === 'mae' ? 'Mean Absolute Error' : 'R^2 Score'
+        const withIng = train ? 'Training' : 'Testing';
+
         const myChart = new Chart(lineChart, {
             type: 'line',
             data: {
-                labels: data.xYears,
+                labels: controlData.trials,
                 datasets: [
                     {
-                        label: `Combined Global Land-Surface, Air, and Water-Surface Temperatures in ${degreeSymbol}C`,
-                        data: data.yTemps,
+                        label: `${metricTitle} of the Control Area Predictor`,
+                        data: controlData[property],
                         fill: false,
                         backgroundColor: 'rbga(255, 0, 132, 0.2)',
                         borderColor: 'rgba(255, 0, 132, 1)',
                         borderWidth: 1
                     },
                     {
-                        label: `Combined Nothern Hemisphere Land-Surface, Air, and Water-Surface Temperatures in ${degreeSymbol}C`,
-                        data: data.yNHtemps,
+                        label: `${metricTitle} of the Multilayer Perceptron Area Predictor`,
+                        data: mlpData[property],
                         fill: false,
                         backgroundColor: 'rbga(0, 102, 255, 0.2)',
                         borderColor: 'rgba(0, 102, 255, 1)',
                         borderWidth: 1
                     },
                     {
-                        label: `Combined Southern Hemisphere Land-Surface, Air, and Water-Surface Temperatures in ${degreeSymbol}C`,
-                        data: data.ySHtemps,
+                        label: `${metricTitle} of the Mulitple Linear Regression Area Predictor`,
+                        data: mlrData[property],
                         fill: false,
                         backgroundColor: 'rbga(0, 153, 51, 0.2)',
                         borderColor: 'rgba(0, 153, 51, 1)',
@@ -80,14 +97,14 @@
                     x: {
                         title: {
                             display: true,
-                            text: 'Year',         // x-axis title
+                            text: 'Trial #',         // x-axis title
                             font: {
                                 size: 14
                             }
                         },
                         ticks: {
                             callback: function(val, index) {
-                                return index % 5 === 0 ? this.getLabelForValue(val) : '';
+                                return index % 5 === 4 ? this.getLabelForValue(val) : '';
                             },
                             font: {
                                 size: 14
@@ -100,27 +117,30 @@
                     y: {
                         title: {
                             display: true,
-                            text: 'Mean Temperatures',         // y-axis title
+                            text: metricTitle,         // y-axis title
                             font: {
                                 size: 14
                             }
                         },
                         ticks: {
                             min: 0,
-                            maxTicksLimit: data.yTemps.length/10,
+                            major: {
+                                enabled: true
+                            },
                             font: {
                                 size: 12
                             }
                         },
                         grid: {
                             color: '#6c767e'
-                        }
+                        },
+                        type: (metric === 'mae' && !train) ? 'logarithmic' : 'linear'
                     }
                 },
                 plugins: {  // Display options for title and legends
                     title: {
                         display: true,
-                        text: 'Global Mean Temperature vs. Year (since 1880)',
+                        text: `${metricTitleWithoutUnit} for Area Predictors over ${withIng} Datasets`,
                         font: {
                             size: 24
                         },
@@ -139,4 +159,7 @@
         })
     }
     
-    createChart();
+createChart('mae', true);
+createChart('mae', false);
+createChart('r2', true);
+createChart('r2', false);
