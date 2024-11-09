@@ -60,7 +60,7 @@
         const withIng = train ? 'Training' : 'Testing';
 
         const myChart = new Chart(lineChart, {
-            type: 'line',
+            type: 'scatter',
             data: {
                 labels: controlData.trials,
                 datasets: [
@@ -68,24 +68,24 @@
                         label: `${metricTitle} of the Control Area Predictor`,
                         data: controlData[property],
                         fill: false,
-                        backgroundColor: 'rbga(255, 0, 132, 0.2)',
-                        borderColor: 'rgba(255, 0, 132, 1)',
+                        backgroundColor: '#E85F5C88',
+                        borderColor: '#E85F5C',
                         borderWidth: 1
                     },
                     {
                         label: `${metricTitle} of the Multilayer Perceptron Area Predictor`,
                         data: mlpData[property],
                         fill: false,
-                        backgroundColor: 'rbga(0, 102, 255, 0.2)',
-                        borderColor: 'rgba(0, 102, 255, 1)',
+                        backgroundColor: '#F4987B88',
+                        borderColor: '#F4987BFF',
                         borderWidth: 1
                     },
                     {
                         label: `${metricTitle} of the Mulitple Linear Regression Area Predictor`,
                         data: mlrData[property],
                         fill: false,
-                        backgroundColor: 'rbga(0, 153, 51, 0.2)',
-                        borderColor: 'rgba(0, 153, 51, 1)',
+                        backgroundColor: '#FFD19988',
+                        borderColor: '#FFD199',
                         borderWidth: 1
                     }
                 ]
@@ -103,8 +103,8 @@
                             }
                         },
                         ticks: {
-                            callback: function(val, index) {
-                                return index % 5 === 4 ? this.getLabelForValue(val) : '';
+                            callback: function(val) {
+                                return "Trial " + val + '';
                             },
                             font: {
                                 size: 14
@@ -123,7 +123,6 @@
                             }
                         },
                         ticks: {
-                            min: 0,
                             major: {
                                 enabled: true
                             },
@@ -134,7 +133,8 @@
                         grid: {
                             color: '#6c767e'
                         },
-                        type: (metric === 'mae' && !train) ? 'logarithmic' : 'linear'
+                        min: (metric === 'mae') ? 6000000 : -0.041,
+                        max: (metric === 'mae') ? 14000000 : 0.03
                     }
                 },
                 plugins: {  // Display options for title and legends
