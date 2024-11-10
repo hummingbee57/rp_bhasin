@@ -42,9 +42,9 @@
     
     async function createChart(metric, train) {    // metric can be 'mae' or 'r2', train can be true or false
         // Get formatted data for all three area predictors
-        const controlData = await getData('../data/control_area.csv'); // wait for getData to get formatted data
-        const mlpData = await getData('../data/mlp_area.csv');
-        const mlrData = await getData('../data/mlr_area.csv');
+        const controlData = await getData('data/control_area.csv'); // wait for getData to get formatted data
+        const mlpData = await getData('data/mlp_area.csv');
+        const mlrData = await getData('data/mlr_area.csv');
 
         const chartId = `${metric}-${train ? 'train' : 'test'}`
         console.log(chartId)
